@@ -1,0 +1,14 @@
+.stopwatch {
+  height: 25px;
+  width: 37.5px; 
+
+  display: flex;
+}
+.number {
+  height: 24px;
+  width: 12.5px; 
+  overflow: hidden;
+
+  background-repeat: no-repeat;
+  background: url("../../../img/sprite.png");
+}

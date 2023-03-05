@@ -1,0 +1,11 @@
+.cell {
+  width: 16px;
+  height: 16px;
+  box-sizing: border-box;
+  background-repeat: no-repeat;
+  background: url("../../../img/sprite.png");
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}   

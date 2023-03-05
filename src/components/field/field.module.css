@@ -1,0 +1,8 @@
+.field {
+  border: solid 5px;
+  border-color: #7b7b7b #ffffff #ffffff #7b7b7b;
+
+  box-sizing: border-box;
+ 
+  display: flex; 
+}

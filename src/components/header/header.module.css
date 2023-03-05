@@ -1,0 +1,23 @@
+.header {
+  width: 100%;
+  height: 50px;
+  
+  padding: 10px;
+  margin-bottom: 7px;
+
+  box-sizing: border-box;
+
+  border: solid 5px;
+  border-color: #7b7b7b #ffffff #ffffff #7b7b7b;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.smiley {
+  width: 25px; 
+  height: 25px;  
+ 
+  background-repeat: no-repeat;
+  background: url('../../img/sprite.png');
+}
