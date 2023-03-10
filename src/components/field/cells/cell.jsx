@@ -7,7 +7,7 @@ import {
   startPlay,
   openCellreducers,
   gameOverReduser,
-  openNeighboringCells, 
+  openNeighboringCells,
   gameWinReduser,
 } from "../../../services/reducers/field-reducers";
 import { useDispatch, useSelector } from "react-redux";
@@ -25,13 +25,22 @@ export const Cell = ({ cellDate }) => {
   const [explodedMine, setExplodedMine] = useState(0);
 
   const startPlayFunc = () => {
-    dispatch(makeMines(40, id));
+    dispatch(makeMines(NumOfMines, id));
     dispatch(increaseCellsStateInFieldMap());
     dispatch(startPlay());
   };
 
   const onContextMenu = () => {
     if (!gameOver) {
+      setIconNumber(
+        iconNumber !== 2
+          ? NumOfMines !== 0
+            ? iconNumber + 1
+            : iconNumber !== 1
+            ? iconNumber + 2
+            : iconNumber + 1
+          : 0
+      );
       if (!play) {
         startPlayFunc();
       }
@@ -41,7 +50,6 @@ export const Cell = ({ cellDate }) => {
       if (iconNumber === 1) {
         dispatch(increaseNumOfMines());
       }
-      setIconNumber(iconNumber < 2 ? iconNumber + 1 : 0);
     }
   };
 
@@ -51,7 +59,7 @@ export const Cell = ({ cellDate }) => {
         startPlayFunc();
       }
       if (iconNumber !== 1) {
-        dispatch(openCellreducers(id)); 
+        dispatch(openCellreducers(id));
       }
       if (cellDate.cellState === -1) {
         setExplodedMine(1);

@@ -13,6 +13,7 @@ export const initialState = {
   newGameStarted: false,
   startTime: 0,
   emptyCells: 255,
+   
 };
 
 const fieldReducers = createSlice({

@@ -4,19 +4,21 @@ import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 
 export const Stopwatch = () => {
-  const { play, startTime, newGameStarted } = useSelector((store) => store.madedField);
+  const { play, startTime, gameOver } = useSelector(
+    (store) => store.madedField
+  );
 
   const [number, setNumber] = useState(0);
   const [numberTwo, setNumberTwo] = useState(0);
   const [numberThree, setNumberThree] = useState(0);
-  const [timeSec, setTimeSec] = useState(0);
+  const [timeSec, setTimeSec] = useState(0); 
 
   let timerId;
 
   useEffect(() => {
     if (play) {
       let timeSecStr = "";
-      timerId = setInterval(() => {
+      timerId = setTimeout(() => {
         setTimeSec(
           999 !== timeSec && play
             ? Math.floor((Date.now() - startTime) / 1000)
@@ -29,37 +31,42 @@ export const Stopwatch = () => {
       }, 1000);
     }
     if (!play) {
-      clearInterval(timerId);  
+      clearInterval(timerId);
+      console.log("удаление таймера");
     }
     return () => {
-      clearInterval(timerId);
+      if (!play) {
+        clearInterval(timerId);
+        console.log("удаление таймера");
+      }
     };
   });
+  useEffect(() => {
+    setTimeSec(0);
+    setNumber(0);
+    setNumberTwo(0);
+    setNumberThree(0);
+    
+  }, [startTime, gameOver]);
 
   return (
     <div className={style.stopwatch}>
       <div
         className={style.number}
         style={{
-          backgroundPosition: play
-            ? numbersForstopwatch[number]
-            : numbersForstopwatch[0],
+          backgroundPosition: startTime === 0 ? numbersForstopwatch[0] : numbersForstopwatch[number],
         }}
       ></div>
       <div
         className={style.number}
         style={{
-          backgroundPosition: play
-            ? numbersForstopwatch[numberTwo]
-            : numbersForstopwatch[0],
+          backgroundPosition: startTime === 0 ? numbersForstopwatch[0] : numbersForstopwatch[numberTwo],
         }}
       ></div>
       <div
         className={style.number}
         style={{
-          backgroundPosition: play
-            ? numbersForstopwatch[numberThree]
-            : numbersForstopwatch[0],
+          backgroundPosition: startTime === 0 ? numbersForstopwatch[0] : numbersForstopwatch[numberThree],
         }}
       ></div>
     </div>
