@@ -9,7 +9,7 @@ export const countOpenCells = (fieldMap) => {
     }
 
    
-  }
-  /* console.log(count) */
-  return count - 42;
+  } 
+  console.log(count);
+  return count;
 };

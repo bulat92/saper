@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { openField } from "../../consts";
-import { increaseCellsStateInFieldMapFunc } from "./increase-cells-state-in-field-map-func";
-import { countOpenCells } from "./count-open-cells";
+import { increaseCellsStateInFieldMapFunc } from "./increase-cells-state-in-field-map-func"; 
 import { openNeighboringCellsFunc } from "./open-neighboring-cells";
+import { countOpenCells } from "./count-open-cells";
 
 export const initialState = {
   fieldMap: openField(),
@@ -12,8 +12,7 @@ export const initialState = {
   gameWin: false,
   newGameStarted: false,
   startTime: 0,
-  emptyCells: 255,
-   
+  emptyClosedCells: 256, 
 };
 
 const fieldReducers = createSlice({
@@ -49,7 +48,7 @@ const fieldReducers = createSlice({
       state.startTime = 0;
       state.newGameStarted = !state.newGameStarted;
     },
-    gameOverReduser: (state) => {
+    gameOverReducer: (state) => {
       state.play = false;
       state.gameOver = true;
       state.fieldMap = state.fieldMap.map((row) =>
@@ -58,18 +57,14 @@ const fieldReducers = createSlice({
         )
       );
     },
-    gameWinReduser: (state) => {
+    gameWinReducer: (state) => {
       state.play = false;
       state.gameOver = true;
       state.gameWin = true;
     },
-    openCellreducers: (state, action) => {
-      state.fieldMap = state.fieldMap.map((row) =>
-        row.map((cell) =>
-          cell.id !== action.payload ? cell : { ...cell, cellOpen: true }
-        )
-      ); 
+    openCellreducers: (state, action) => {   
       state.fieldMap = openNeighboringCellsFunc(state.fieldMap, action.payload); 
+      state.emptyClosedCells = countOpenCells(state.fieldMap) - 40;
     }, 
   },
 });
@@ -81,10 +76,9 @@ export const {
   decreaseNumOfMines,
   startPlay,
   newGame,
-  gameOverReduser,
-  openCellreducers,
-  openNeighboringCells,
-  decreaseEmptyCells,
-  gameWinReduser,
+  gameOverReducer,
+  openCellreducers, 
+  decreaseemptyClosedCells,
+  gameWinReducer,
 } = fieldReducers.actions;
 export default fieldReducers.reducer;

@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 
 export const Stopwatch = () => {
-  const { play, startTime, gameOver } = useSelector(
+  const { play, startTime } = useSelector(
     (store) => store.madedField
   );
 
@@ -31,13 +31,11 @@ export const Stopwatch = () => {
       }, 1000);
     }
     if (!play) {
-      clearInterval(timerId);
-      console.log("удаление таймера");
+      clearInterval(timerId); 
     }
     return () => {
       if (!play) {
-        clearInterval(timerId);
-        console.log("удаление таймера");
+        clearInterval(timerId); 
       }
     };
   });

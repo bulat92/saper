@@ -1,21 +1,18 @@
 import style from "./cell.module.css";
 import { useState, useEffect } from "react";
-import {
-  increaseCellsStateInFieldMap,
+import { 
   increaseNumOfMines,
   decreaseNumOfMines,
   startPlay,
   openCellreducers,
-  gameOverReduser,
-  openNeighboringCells,
-  gameWinReduser,
+  gameOverReducer,  
 } from "../../../services/reducers/field-reducers";
 import { useDispatch, useSelector } from "react-redux";
 import { cellIcons, numbersForCell, minesType } from "../../../consts";
 import { makeMines } from "../../../services/action/make-mines";
 
 export const Cell = ({ cellDate }) => {
-  const { play, NumOfMines, gameOver, newGameStarted, emptyCells } =
+  const { play, NumOfMines, gameOver, newGameStarted } =
     useSelector((store) => store.madedField);
 
   const dispatch = useDispatch();
@@ -25,8 +22,7 @@ export const Cell = ({ cellDate }) => {
   const [explodedMine, setExplodedMine] = useState(0);
 
   const startPlayFunc = () => {
-    dispatch(makeMines(NumOfMines, id));
-    dispatch(increaseCellsStateInFieldMap());
+    dispatch(makeMines(NumOfMines, id)); 
     dispatch(startPlay());
   };
 
@@ -63,7 +59,7 @@ export const Cell = ({ cellDate }) => {
       }
       if (cellDate.cellState === -1) {
         setExplodedMine(1);
-        dispatch(gameOverReduser());
+        dispatch(gameOverReducer());
       }
     } 
   };
@@ -72,13 +68,7 @@ export const Cell = ({ cellDate }) => {
     setIconNumber(0);
     setExplodedMine(0);
   }, [newGameStarted]);
-
-  useEffect(() => {
-    if (emptyCells === 0) {
-      dispatch(gameWinReduser());
-    }
-  }, [emptyCells]);
-
+ 
   return (
     <div
       className={style.cell}
