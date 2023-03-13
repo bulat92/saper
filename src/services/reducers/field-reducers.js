@@ -69,11 +69,8 @@ const fieldReducers = createSlice({
           cell.id !== action.payload ? cell : { ...cell, cellOpen: true }
         )
       ); 
-    },
-    openNeighboringCells: (state, action) => {
-      state.fieldMap = openNeighboringCellsFunc(state.fieldMap, action.payload);
-      state.emptyCells = countOpenCells(state.fieldMap);
-    },
+      state.fieldMap = openNeighboringCellsFunc(state.fieldMap, action.payload); 
+    }, 
   },
 });
 

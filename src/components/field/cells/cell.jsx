@@ -65,12 +65,7 @@ export const Cell = ({ cellDate }) => {
         setExplodedMine(1);
         dispatch(gameOverReduser());
       }
-    }
-    if (!gameOver) {
-      if (cellDate.cellState === 0) {
-        dispatch(openNeighboringCells(id));
-      }
-    }
+    } 
   };
 
   useEffect(() => {

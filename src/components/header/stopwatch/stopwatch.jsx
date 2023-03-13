@@ -47,7 +47,7 @@ export const Stopwatch = () => {
     setNumberTwo(0);
     setNumberThree(0);
     
-  }, [startTime, gameOver]);
+  }, [startTime]);
 
   return (
     <div className={style.stopwatch}>
