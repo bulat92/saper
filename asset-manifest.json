@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/saper/static/css/main.41bd1f55.css",
+    "main.css": "/saper/static/css/main.eb582516.css",
     "main.js": "/saper/static/js/main.66b80cbf.js",
     "index.html": "/saper/index.html",
-    "main.41bd1f55.css.map": "/saper/static/css/main.41bd1f55.css.map",
+    "main.eb582516.css.map": "/saper/static/css/main.eb582516.css.map",
     "main.66b80cbf.js.map": "/saper/static/js/main.66b80cbf.js.map"
   },
   "entrypoints": [
-    "static/css/main.41bd1f55.css",
+    "static/css/main.eb582516.css",
     "static/js/main.66b80cbf.js"
   ]
 }
