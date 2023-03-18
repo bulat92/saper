@@ -11,17 +11,17 @@ import { useDispatch, useSelector } from "react-redux";
 function App() { 
   const [img, setImg] = useState(false);
 
-  const {  emptyClosedCells } =
+  const {  emptyClosedCells, fieldMap } =
     useSelector((store) => store.madedField);
 
   const dispatch = useDispatch();
 
   
   useEffect(() => {
-    if (emptyClosedCells === 0) {
+    if (emptyClosedCells <= 0) {
       dispatch(gameWinReducer());
     }
-  }, [emptyClosedCells]);
+  }, [emptyClosedCells, fieldMap]);
 
   const preventDefaultFunc = (e) => {
     e.preventDefault(); 
