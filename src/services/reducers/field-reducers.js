@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { openField } from "../../consts";
-import { increaseCellsStateInFieldMapFunc } from "./increase-cells-state-in-field-map-func"; 
+import { increaseCellsStateInFieldMapFunc } from "./increase-cells-state-in-field-map-func";
 import { openNeighboringCellsFunc } from "./open-neighboring-cells";
 import { countOpenCells } from "./count-open-cells";
 
@@ -12,7 +12,7 @@ export const initialState = {
   gameWin: false,
   newGameStarted: false,
   startTime: 0,
-  emptyClosedCells: 256, 
+  emptyClosedCells: 256,
 };
 
 const fieldReducers = createSlice({
@@ -62,10 +62,12 @@ const fieldReducers = createSlice({
       state.gameOver = true;
       state.gameWin = true;
     },
-    openCellreducers: (state, action) => {   
-      state.fieldMap = openNeighboringCellsFunc(state.fieldMap, action.payload); 
+    openCellreducers: (state, action) => {
+      state.fieldMap = openNeighboringCellsFunc(state.fieldMap, [
+        action.payload,
+      ]);
       state.emptyClosedCells = countOpenCells(state.fieldMap) - 40;
-    }, 
+    },
   },
 });
 
@@ -77,7 +79,7 @@ export const {
   startPlay,
   newGame,
   gameOverReducer,
-  openCellreducers, 
+  openCellreducers,
   decreaseemptyClosedCells,
   gameWinReducer,
 } = fieldReducers.actions;

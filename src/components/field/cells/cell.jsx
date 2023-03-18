@@ -64,6 +64,13 @@ export const Cell = ({ cellDate }) => {
     } 
   };
 
+  useEffect(() => { 
+    if (iconNumber === 1) {
+      setIconNumber(0);
+      dispatch(increaseNumOfMines());
+    }
+  }, [cellDate.cellOpen]);
+
   useEffect(() => {
     setIconNumber(0);
     setExplodedMine(0);
