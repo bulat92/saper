@@ -21,6 +21,6 @@
 
 @media screen and (max-width: 720px) {
   .app{
-    transform: scale(1.5);
+    transform: scale(1.20);
   }
 }

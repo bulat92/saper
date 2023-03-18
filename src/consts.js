@@ -21,7 +21,7 @@ export const numbersForCell = [
   "0px -68px",
   "-17px -68px",
   "-34px -68px",
-  "-53px -68px",
+  "-51px -68px",
   "-70px -68px",
   "-85px -68px",
   "-102px -68px",
