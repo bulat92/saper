@@ -22,7 +22,7 @@ export const Cell = ({ cellDate }) => {
   const [explodedMine, setExplodedMine] = useState(0);
 
   const startPlayFunc = () => {
-    dispatch(makeMines(NumOfMines, id)); 
+    dispatch(makeMines(40, id)); 
     dispatch(startPlay());
   };
 
