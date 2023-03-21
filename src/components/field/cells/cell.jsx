@@ -82,7 +82,14 @@ export const Cell = ({ cellDate }) => {
       onClick={onClick}
       onContextMenu={onContextMenu}
       style={{
-        backgroundPosition: numbersForCell[5]}}
+        backgroundPosition: cellDate.cellOpen
+          ? cellDate.cellState === -1
+            ? iconNumber === 1
+              ? minesType[2]
+              : minesType[explodedMine]
+            : numbersForCell[cellDate.cellState]
+          : cellIcons[iconNumber],
+      }}
     ></div>
   );
 };
