@@ -65,7 +65,7 @@ export const Cell = ({ cellDate }) => {
   };
 
   useEffect(() => { 
-    if (iconNumber === 1) {
+    if (iconNumber === 1 && play) {
        
       dispatch(increaseNumOfMines());
     }
