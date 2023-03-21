@@ -40,12 +40,13 @@ const fieldReducers = createSlice({
       state.startTime = Date.now();
     },
     newGame: (state) => {
-      state.play = false;
-      state.fieldMap = openField();
+      state.emptyClosedCells = 256;
+      state.fieldMap = openField(); 
+      state.startTime = 0;
+      state.play = false; 
       state.NumOfMines = 40;
       state.gameOver = false;
-      state.gameWin = false;
-      state.startTime = 0;
+      state.gameWin = false; 
       state.newGameStarted = !state.newGameStarted;
     },
     gameOverReducer: (state) => {
